@@ -24,7 +24,8 @@ export default class MainWindow {
 	createWindow(path, options) {
 		this.window = new BrowserWindow(options);
 		this.window.loadUrl(path);
-		this.window.openDevTools();
+		if (!__isproduction)
+			this.window.openDevTools();
 		this.window.on('closed', () => {
 			this.window = null;
 		});
